@@ -17,6 +17,7 @@ import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
 import seedu.address.model.person.Person;
+import seedu.address.model.tag.Tag;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -84,8 +85,18 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public void removeTag(Tag tag) throws DuplicatePersonException{
+    public void removeTag(Tag tag) throws DuplicatePersonException, PersonNotFoundException{
+        int i;
+        for (i = 0; i < addressBook.getPersonList().size(); i++){
+            ReadOnlyPerson originalPerson = addressBook.getPersonList().get(i);
 
+            Person newPerson = new Person(originalPerson);
+            Set <Tag> updatedTags = newPerson.getTags();
+            updatedTags.remove(tag);
+            newPerson.setTags(updatedTags);
+
+            addressBook.updatePerson(originalPerson, newPerson);
+        }
     }
 
     //=========== Filtered Person List Accessors =============================================================

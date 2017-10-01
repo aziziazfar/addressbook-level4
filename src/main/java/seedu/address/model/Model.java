@@ -41,8 +41,9 @@ public interface Model {
      *
      *  @throws DuplicatePersonException if updating the person's details causes the person to be equivalent to
      *      another existing person in the list.
+     *  @throws PersonNotFoundException if person could not be found in the list.
      */
-    void removeTag(Tag tag)  throws DuplicatePersonException;
+    void removeTag(Tag tag)  throws DuplicatePersonException, PersonNotFoundException;
 
     /** Returns an unmodifiable view of the filtered person list */
     ObservableList<ReadOnlyPerson> getFilteredPersonList();
