@@ -3,9 +3,9 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Set;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
-import java.util.Set;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,10 +13,10 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.model.AddressBookChangedEvent;
+import seedu.address.model.person.Person;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
-import seedu.address.model.person.Person;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -57,7 +57,9 @@ public class ModelManager extends ComponentManager implements Model {
         return addressBook;
     }
 
-    /** Raises an event to indicate the model has changed */
+    /**
+     * Raises an event to indicate the model has changed
+     */
     private void indicateAddressBookChanged() {
         raise(new AddressBookChangedEvent(addressBook));
     }
@@ -85,13 +87,13 @@ public class ModelManager extends ComponentManager implements Model {
     }
 
     @Override
-    public void removeTag(Tag tag) throws DuplicatePersonException, PersonNotFoundException{
+    public void removeTag(Tag tag) throws DuplicatePersonException, PersonNotFoundException {
         int i;
-        for (i = 0; i < addressBook.getPersonList().size(); i++){
+        for (i = 0; i < addressBook.getPersonList().size(); i++) {
             ReadOnlyPerson originalPerson = addressBook.getPersonList().get(i);
 
             Person newPerson = new Person(originalPerson);
-            Set <Tag> updatedTags = newPerson.getTags();
+            Set<Tag> updatedTags = newPerson.getTags();
             updatedTags.remove(tag);
             newPerson.setTags(updatedTags);
 
