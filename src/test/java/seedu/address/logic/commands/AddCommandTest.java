@@ -19,6 +19,7 @@ import seedu.address.logic.UndoRedoStack;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
+import seedu.address.model.tag.Tag;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.ReadOnlyPerson;
@@ -120,6 +121,9 @@ public class AddCommandTest {
         @Override
         public void updatePerson(ReadOnlyPerson target, ReadOnlyPerson editedPerson)
                 throws DuplicatePersonException {
+            fail("This method should not be called.");
+        }
+        public void removeTag(Tag tag) throws DuplicatePersonException, PersonNotFoundException {
             fail("This method should not be called.");
         }
 
