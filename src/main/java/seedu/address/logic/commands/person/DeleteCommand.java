@@ -23,7 +23,7 @@ public class DeleteCommand extends UndoableCommand {
             + "Parameters: INDEX [SECOND_INDEX] [INDEX_RANGE] (integers must be positive)\n"
             + "Example: " + COMMAND_WORD + " 1" + " 2~5";
 
-    public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Person(s): %1$s";
+    public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Person: %1$s";
 
     private final List<Index> targetIndices = new ArrayList<>();
 
