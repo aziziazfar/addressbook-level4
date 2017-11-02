@@ -35,7 +35,7 @@ public class DeleteCommand extends UndoableCommand {
         targetIndices.addAll(indices);
     }
 
-    //@@author Azizi
+    //@@author aziziazfar
     @Override
     public CommandResult executeUndoableCommand() throws CommandException {
 
